@@ -114,7 +114,7 @@ public class MenuPrincipal {
                 switch (op) {
                     //<editor-fold defaultstate="collapsed" desc="Opciones a Ejecutar">
                     case 1:
-                        verUsuarios();
+                        this.verUsuarios();
                         break;
                     case 2:
                         this.agregarUsuario();
@@ -188,7 +188,7 @@ public class MenuPrincipal {
 
             } while (op != 6);
         }else{
-            System.out.println("el usuario aun no esta registrado");
+            System.out.println("el usuario aun no esta registrado\n");
         }
     }
     private void invitado(){
@@ -230,7 +230,7 @@ public class MenuPrincipal {
     
 private void agregarUsuario() {
         String email; int pos;
-        System.out.println("Ingrese correo:");
+        System.out.print("Ingrese correo: ");
         email=input.next();
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
              // El email a validar 
@@ -239,11 +239,10 @@ private void agregarUsuario() {
             pos = validar(email); //Verificamos si ya existe el email
             if (pos == -1) {
                 String nom, password;
-
                 //Capturamos los datos basicos del ususario
-                System.out.println("Ingrese nombre: ");
+                System.out.print("Ingrese nombre: ");
                 nom = input.next();
-                System.out.println("Ingrese password: ");
+                System.out.print("Ingrese password: ");
                 password = input.next();
                 //se agregan las playlist del usuario
                 List<Lista> playlist = new ArrayList();
@@ -262,7 +261,7 @@ private void agregarUsuario() {
 
 private void registrarUsuario(){
         String email; int pos;
-        System.out.println("Ingrese correo:");
+        System.out.println("Ingrese correo: ");
         email=input.next();
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" 
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
@@ -274,9 +273,9 @@ private void registrarUsuario(){
                 String nom, password;
 
                 //Capturamos los datos basicos del ususario
-                System.out.println("Ingrese nombre: ");
+                System.out.print("Ingrese nombre: ");
                 nom = input.next();
-                System.out.println("Ingrese password: ");
+                System.out.print("Ingrese password: ");
                 password = input.next();
                 Usuario objuser = new Usuario(nom,password,email);
                 lista_users.add(objuser);  //Agregamos el vinculado a la coleccion (ArrayList) de objeto
@@ -296,8 +295,9 @@ private void registrarUsuario(){
             Usuario user;
             for (int i = 0; i < lista_users.size(); i++) {
                 user = (Usuario)lista_users.get(i);
-                user.toString();
+                System.out.println(user.toString());
             }
+            System.out.println("\n");
         }
     
     }
@@ -316,16 +316,16 @@ private void registrarUsuario(){
 private List<Lista> registrarplaylist(List<Lista> playlist) {
         String opcion;
         do {
-            System.out.println("\nRegistro de playlist:");
+            System.out.println("\nRegistro de playlist");
             System.out.print("nombre playlist: ");
             String nom = input.next();
             System.out.print("Ingrese una descripcion(opcional): ");
-            String descrip = input.next();
+            String descrip = input.nextLine();
             System.out.print("ingrese el estado estado dela playlis: ");
             String pub = input.next();
             List<Cancion> canciones = new ArrayList();
             canciones = registrarCanciones(canciones);
-            System.out.println("Desea crear otra playslist");
+            System.out.print("Desea crear otra playslist");
             opcion=input.next();                  
         } while (opcion.equalsIgnoreCase("si"));
         return playlist; //Devolvemos la lista de cursos
@@ -341,31 +341,14 @@ private List<Cancion> registrarCanciones(List<Cancion> canciones) {
             String album = input.next();
             System.out.print("Ingrese artista: ");
             String artist = input.next();
-            System.out.print("Ingrese genero musical");
+            System.out.print("Ingrese genero musical: ");
             String genero = input.next();
             Cancion objcancion = new Cancion(nom, album, artist, genero);
-            System.out.println("Desea registrar otra cancion");
+            System.out.print("Desea registrar otra cancion: ");
             opcion = input.next();
         } while (opcion.equalsIgnoreCase("si"));
         return canciones; //Devolvemos la lista de cursos
     }
-
-
-//private String buscar(String email) {
-//        String datos = "";
-//        datos += "Informacion del " + obj.getTipo() + ":\n";
-//        datos += "Documento: " + obj.getDocumento() + "\n";
-//        datos += "Nombre: " + obj.getNombres() + "\n";
-//        datos += "Apellido: " + obj.getApellidos() + "\n";
-//        //Concatenamos el resto de datos segun el tipo de persona
-//        switch (tipo) {
-//            case "profesor contratista":
-//                datos += "Profesion: " + ((Contratista) obj).getProfesion() + "\n";
-//                datos += "Salario: " + ((Contratista) obj).getSalario() + "\n";
-//                datos += "HT: " + ((Contratista) obj).getHt() + "\n";
-//                datos += "Valor Hora: " + ((Contratista) obj).getValorHora() + "\n\n";
-//                datos += "Informacion de Cursos: " + mostrarCurso(((Contratista) obj).getCurso()); //obtenemos los cursos
-//                break;
 
 
 public static void main(String[]ar){
