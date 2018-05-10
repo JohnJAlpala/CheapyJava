@@ -3,7 +3,7 @@
     Created on : 6/05/2018, 01:47:45 PM
     Author     : richard
 --%>
-
+<%@include file="/parts/header1.jsp" %>
 <jsp:include page="/parts/navbar.jsp"/>
 <div class="container">
     <div class="row">
@@ -38,3 +38,4 @@
     </div>
 </div>
 <jsp:include page="/parts/footer.jsp" />
+<%@include file="/parts/footer1.jsp" %>
