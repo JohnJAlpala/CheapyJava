@@ -3,7 +3,7 @@
     Created on : 2/05/2018, 12:03:05 PM
     Author     : richard
 --%>
-
+<%@include file="/parts/header1.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -47,3 +47,4 @@
 </div>
 <!-- FIN CONTAINER -->
 <jsp:include page="/parts/footer.jsp" />
+<%@include file="/parts/footer1.jsp" %>
