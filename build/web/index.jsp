@@ -28,7 +28,7 @@
                     <td>ALBUM 1</td>
                     <td>
                         <form action="${pageContext.request.contextPath}/" method="POST">
-                            <input type="hidden" name="delete" value="id"/>
+                            <input type="hidden" name="d--elete" value="id"/>
                             <button class="btn btn-danger btn-rounded btn-sm my-0" type="submit">
                                 <i class="fa fa-times"></i>
                             </button>
@@ -81,7 +81,7 @@
                     <td>ALBUM 1</td>
                     <td>
                         <form action="${pageContext.request.contextPath}/" method="POST">
-                            <input type="hidden" name="delete" value="id"/>
+                            <input type="hidden" name="add" value="id"/>
                             <button class="btn btn-success btn-rounded btn-sm my-0" type="submit">
                                 <i class="fa fa-check"></i>
                             </button>
