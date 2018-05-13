@@ -1,0 +1,5 @@
+* Opciones de administrador, enviar mensajes a usuarios.
+* Implementar logica de los controladores
+* Falta controlador y vista de comentarios
+* Modelos, cargar de archivo
+* Modificar la clase Mensaje con todos los textos de la aplicacion
