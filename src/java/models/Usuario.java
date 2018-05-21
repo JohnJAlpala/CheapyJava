@@ -1,28 +1,35 @@
 package models;
 
 import java.util.*;
+import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import static models.Lista.playlist;
 
 public class Usuario {
+    
+    public static ArrayList<Usuario>users = new ArrayList<>();
+    Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
     private String username;
     private String password;
     private String email;
-    private List<Lista>playlist;
+    private ArrayList<Lista>playlist = new ArrayList<>();
     
     public Usuario(){}
 
-    public Usuario(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
+    public Usuario(String username, String password, String email) throws IOException{
+        this.setUsername(username);
+        this.setPassword(password);
         this.setEmail(email);
+        users.add(this);
     }
 
-    public Usuario(String username, String password, String email, List<Lista> playlist) {
-        this.username = username;
-        this.password = password;
+    public Usuario(String username, String password, String email, ArrayList<Lista> playlist) throws IOException{
+        this.setUsername(username);
+        this.setPassword(password);
         this.setEmail(email);
-        this.playlist = playlist;
+        this.setPlaylist(playlist);
+        
     }
     
 
@@ -47,7 +54,6 @@ public class Usuario {
     }
 
     public void setEmail(String email) {
-         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
              // El email a validar 
             Matcher mather = pattern.matcher(email);
              if (mather.find() == true) {
@@ -75,5 +81,14 @@ public class Usuario {
         return "Nombre: " + this.username + "Email: " + this.email;
     }
     
+     public static ArrayList<Usuario> buscarUsuario(String email) {
+        ArrayList<Usuario> encontrados = new ArrayList();
+        for (Usuario user : users) {
+            if (user.getEmail().toLowerCase().contains(email.toLowerCase())) {
+                encontrados.add(user);
+            }
+        }
+        return encontrados;
+    }
     
 }

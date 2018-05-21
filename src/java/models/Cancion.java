@@ -1,19 +1,23 @@
 package models;
 
 import java.util.*;
+import static models.Album.albums;
+
 public class Cancion {
+    
+    public static ArrayList<Cancion>canciones = new ArrayList<>();
+    
     private String nombre;
-    private String album;
-    private String artita;
+    private Album album;
+    private Artista artista;
     private String genero;
-
-
-    public Cancion(String nombre, String album, String artita, String genero) {
-        this.nombre = nombre;
-        this.album = album;
-        this.artita = artita;
-        this.genero = genero;
-        
+    
+    public Cancion(String nombre, Album album, Artista artita, String genero) {
+        this.setNombre(nombre);
+        this.setAlbum(album);
+        this.setArtita(artita);
+        this.setGenero(genero);
+        canciones.add(this);
     }
 
     public Cancion() {}
@@ -26,20 +30,20 @@ public class Cancion {
         this.nombre = nombre;
     }
 
-    public String getAlbum() {
+    public Album getAlbum() {
         return album;
     }
 
-    public void setAlbum(String album) {
+    public void setAlbum(Album album) {
         this.album = album;
     }
 
-    public String getArtita() {
-        return artita;
+    public Artista getArtita() {
+        return artista;
     }
 
-    public void setArtita(String artita) {
-        this.artita = artita;
+    public void setArtita(Artista artita) {
+        this.artista = artita;
     }
 
     public String getGenero() {
@@ -50,5 +54,15 @@ public class Cancion {
         this.genero = genero;
     }
 
+    
+    public static ArrayList<Cancion> buscarCancion(String nombre) {
+        ArrayList<Cancion> encontrados = new ArrayList();
+        for (Cancion c : canciones) {
+            if (c.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                encontrados.add(c);
+            }
+        }
+        return encontrados;
+    }
     
 }

@@ -1,26 +1,29 @@
 package models;
 
 import java.util.*;
+import static models.Album.albums;
 public class Lista {
+    
+    public static ArrayList<Lista>playlist = new ArrayList<>();
+    
     private String nombre;
     private String descripcion;
-    private boolean publica;
-    private String Creador;
-    private ArrayList<Cancion>cancion;
+    private String publica;
+    private Usuario Creador;
+    private Cancion cancion;
     private ArrayList<Comentario>comentario;
 
-    public Lista(String nombre, String descripcion, boolean publica, String Creador, ArrayList<Cancion> cancion) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.publica = publica;
-        this.Creador = Creador;
-        this.cancion = cancion;
+    public Lista(String nombre, String descripcion, String publica, Usuario Creador) {
+        this.setNombre(nombre);
+        this.setDescripcion(descripcion);
+        this.setPublica(publica);
+        this.setCreador(Creador);
+        
+        playlist.add(this);
     }
 
     public Lista() {
     }
-
-    
     
     public String getNombre() {
         return nombre;
@@ -38,27 +41,27 @@ public class Lista {
         this.descripcion = descripcion;
     }
 
-    public boolean isPublica() {
+    public String getPublica() {
         return publica;
     }
 
-    public void setPublica(boolean publica) {
+    public void setPublica(String publica) {
         this.publica = publica;
     }
 
-    public String getCreador() {
+    public Usuario getCreador() {
         return Creador;
     }
 
-    public void setCreador(String Creador) {
-        this.Creador = Creador;
+    public void setCreador(Usuario creador) {
+        this.Creador = creador;
     }
 
-    public ArrayList<Cancion> getCancion() {
+    public Cancion getCancion() {
         return cancion;
     }
 
-    public void setCancion(ArrayList<Cancion> cancion) {
+    public void setCancion(Cancion cancion) {
         this.cancion = cancion;
     }
 
@@ -70,6 +73,18 @@ public class Lista {
         this.comentario = comentario;
     }
     
+    public static ArrayList<Lista> buscarLista(String nombre) {
+        ArrayList<Lista> encontrados = new ArrayList();
+        for (Lista list : playlist) {
+            if (list.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                encontrados.add(list);
+            }
+        }
+        return encontrados;
+    }
     
-    
+    @Override
+    public String toString(){
+     return "nombre: "+ getNombre() + "canciones: "+ getCancion();
+    }
 }
