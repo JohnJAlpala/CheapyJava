@@ -4,6 +4,8 @@
     Author     : richard
 --%>
 
+
+<%@page import="models.Mensaje"%>
 <jsp:include page="/parts/navbar.jsp"/>
 <div class="container">
     <div class="row">
@@ -11,27 +13,27 @@
         <div class="col-6">      
             <div class="card center-item">
                 <div class="card-header">
-                    Registration
+                    <%=Mensaje.getMensajes().get("Registration")%>
                 </div>
                 <div class="card-body">
                     <form action="${pageContext.request.contextPath}/register" method="POST">
                         <div class="form-group">
-                            <label for="usernameRegister">Username:</label>
+                            <label for="usernameRegister"><%=Mensaje.getMensajes().get("UserName")%></label>
                             <input type="text" class="form-control" id="usernameRegister" placeholder="User name" name="usernameRegister" required/>
                         </div>
                         <div class="form-group">
-                            <label for="emailRegister">Email:</label>
+                            <label for="emailRegister"><%=Mensaje.getMensajes().get("EMAIL")%></label>
                             <input type="email" class="form-control" id="emailRegister" placeholder="example@gmail.com" name="emailRegister" required/>
                         </div>
                         <div class="form-group">
-                            <label for="passwordRegister">Password:</label>
+                            <label for="passwordRegister"><%=Mensaje.getMensajes().get("Password")%></label>
                             <input type="password" class="form-control" id="passwordRegister" placeholder="Password" name="passwordRegister" required/>
                         </div>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary"> Registrar </button>
+                            <button type="submit" class="btn btn-primary"><%=Mensaje.getMensajes().get("Register")%> </button>
                         </div> 
                     </form>
-                   <p>¿Ya tienes una cuenta? <a href="login.jsp">Iniciar sesión</a></p>
+                            <p><%=Mensaje.getMensajes().get("RegisterQuestion")%> <a href="login.jsp"><%=Mensaje.getMensajes().get("LogIn")%></a></p>
                 </div>
             </div>
         </div>

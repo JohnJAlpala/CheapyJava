@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import models.Mensaje;
 
 public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -56,6 +57,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/parts/navbar.jsp", out, false);
       out.write("\n");
       out.write("<!-- INICIO BODY -->\n");
@@ -69,25 +71,37 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            <div class=\"card center-item\">\n");
       out.write("                <div class=\"card-header\">\n");
-      out.write("                    Login\n");
+      out.write("                    ");
+      out.print(Mensaje.getMensajes().get("LogIn"));
+      out.write("\n");
       out.write("                </div>\n");
       out.write("                <div class=\"card-body\">\n");
       out.write("                    <form action=\"action\">\n");
       out.write("                        <div>\n");
       out.write("                            <div class=\"form-group\">\n");
-      out.write("                                <label for=\"loginInputEmail\">Email: </label>\n");
+      out.write("                                <label for=\"loginInputEmail\">");
+      out.print(Mensaje.getMensajes().get("EMAIL"));
+      out.write("</label>\n");
       out.write("                                <input id=\"loginInputEmail\" class=\"form-control\" type=\"email\" />\n");
       out.write("                            </div>\n");
       out.write("                            <div class=\"form-group\">\n");
-      out.write("                                <label for=\"loginInputPassword\">Password:</label>\n");
+      out.write("                                <label for=\"loginInputPassword\">");
+      out.print(Mensaje.getMensajes().get("Password"));
+      out.write("</label>\n");
       out.write("                                <input id=\"loginInputPassword\" class=\"form-control\" type=\"password\" />\n");
       out.write("                            </div>\n");
       out.write("                            <div class=\"text-right\">\n");
-      out.write("                                <a href=\"menu.jsp\"><button type=\"submit\" class=\"btn btn-primary\">Login</button></a>\n");
+      out.write("                                <a href=\"menu.jsp\"><button type=\"submit\" class=\"btn btn-primary\">");
+      out.print(Mensaje.getMensajes().get("LogIn"));
+      out.write("</button></a>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
       out.write("                    </form>\n");
-      out.write("                    <p>¿No tienes cuenta? <a href=\"register.jsp>\">Regístrate</a></p>\n");
+      out.write("                                <p >");
+      out.print(Mensaje.getMensajes().get("LoginQuestion"));
+      out.write("<a href=\"register.jsp\">");
+      out.print(Mensaje.getMensajes().get("Registration"));
+      out.write(" </a></p>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("\n");

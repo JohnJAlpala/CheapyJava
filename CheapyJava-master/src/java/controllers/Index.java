@@ -83,8 +83,7 @@ public class Index extends HttpServlet {
                 playList1.setCancion(C1);
                 playList1.setCancion(C2);
                 playList1.setCancion(C3);
-                
-                System.out.println(playList1);
+             
                 
                 Comentario msg1 = new Comentario("Comentario", "la pagina esta muy genial", "gracias");
                 Comentario msg2 = new Comentario("Comentario", "le sugiero amplien la biblioteca de canciones", "Muchas gracias, lo tendremos encuenta");

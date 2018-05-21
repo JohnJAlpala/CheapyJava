@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
 import java.util.HashMap;
@@ -14,16 +9,16 @@ public class Mensaje {
     public static HashMap<String, String> createMap() {
         HashMap<String, String> Mensajes = new HashMap<String, String>();
         Mensajes.put("Title", "Cheapify");
-        Mensajes.put("LogIn", "Ingresar");
+        Mensajes.put("LogIn", "Iniciar sesion");
         Mensajes.put("LogOut", "Salir");
-        Mensajes.put("Register", "Registrarse");
+        Mensajes.put("Registration", "Registrarse");
         Mensajes.put("ForgottenPassword", "¿Olvidó su contraseña?");
         Mensajes.put("Home", "Inicio");
         Mensajes.put("list", "Playlist");
         Mensajes.put("FictionalData", "Datos ficticios");
         Mensajes.put("FictionalDataPopUp", "'Se han creado datos ficticios'");
         Mensajes.put("InvalidEmail", "'El correo electrónico ingresado no es válido'");
-        Mensajes.put("IndexSlidesTitle", "BIENVENIDOS A CHEAPIFY");
+        Mensajes.put("Indexwelcome", "BIENVENIDOS A CHEAPIFY");
         Mensajes.put("Footer", "2018 Equipo 10: John Jairo Alpala, Richard Alexis Montoya Londoño y Duberney Gutiérrez Bacca.");
         Mensajes.put("WrongPassOrEmail", "E-mail no registrado o contraseña inválida");
         Mensajes.put("Name", "Nombre");
@@ -50,10 +45,11 @@ public class Mensaje {
         Mensajes.put("SearchList", "Buscar Playlist");
         Mensajes.put("UserName", "Nombre Usuario");
         Mensajes.put("SearchName", "Buscar por nombre");
+        Mensajes.put("SearchResult", "Resultados: ");
         Mensajes.put("NoCoincidences", "No se encontraron coincidencias");
         Mensajes.put("RegisteredEmail", "El E-mail ingresado ya está en uso.");
         Mensajes.put("Artist", "Artista");
-        Mensajes.put("EMAIL", "Correo electrónico: ");
+        Mensajes.put("EMAIL", "Correo electrónico");
         Mensajes.put("Erase", "Eliminar");
         Mensajes.put("EditAdmins", "Editar Admins");
         Mensajes.put("ClientData", "Datos del Usuario");
@@ -66,7 +62,9 @@ public class Mensaje {
         Mensajes.put("Edit", "Editar");
         Mensajes.put("RecoveryPassword","Recuperar contraseña");
         Mensajes.put("RecoveryVerified","Su E-mail ha sido verificado y le hemos envado un mensaje con su contraseña. Lo esperamos pronto.");
-        Mensajes.put("YourPass", "Su contraseña es: ");
+        Mensajes.put("RegisterQuestion", "¿Ya tienes una cuenta? ");
+        Mensajes.put("LoginQuestion", "¿No tienes cuenta? ");
+        
         return Mensajes;
     }
 
