@@ -21,16 +21,17 @@
                         </div>
                         <div class="form-group">
                             <label for="emailRegister">Email:</label>
-                            <input type="email" class="form-control" id="emailRegister" name="emailRegister" required/>
+                            <input type="email" class="form-control" id="emailRegister" placeholder="example@gmail.com" name="emailRegister" required/>
                         </div>
                         <div class="form-group">
                             <label for="passwordRegister">Password:</label>
-                            <input type="password" class="form-control" id="passwordRegister" name="passwordRegister" required/>
+                            <input type="password" class="form-control" id="passwordRegister" placeholder="Password" name="passwordRegister" required/>
                         </div>
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary"> Registrar </button>
-                        </div>
+                        </div> 
                     </form>
+                   <p>¿Ya tienes una cuenta? <a href="login.jsp">Iniciar sesión</a></p>
                 </div>
             </div>
         </div>

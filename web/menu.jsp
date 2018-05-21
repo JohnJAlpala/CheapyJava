@@ -1,13 +1,13 @@
 <%-- 
-    Document   : Index
-    Created on : 2/05/2018, 12:03:05 PM
-    Author     : richard
+    Document   : menu
+    Created on : 17/05/2018, 10:57:09 PM
+    Author     : JOHNY
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<jsp:include page="/parts/navbar.jsp"/>
+<jsp:include page="/parts/header.jsp"/>
 <!-- INICIO BODY -->
 <div class="container">
     <div class="row">
@@ -38,7 +38,6 @@
                             </div>
                         </div>
                     </form>
-                    <p>¿No tienes cuenta? <a href="register.jsp>">Regístrate</a></p>
                 </div>
             </div>
 
@@ -48,3 +47,4 @@
 </div>
 <!-- FIN CONTAINER -->
 <jsp:include page="/parts/footer.jsp" />
+
