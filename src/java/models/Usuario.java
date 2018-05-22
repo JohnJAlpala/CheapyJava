@@ -75,6 +75,60 @@ public class Usuario {
         this.playlist = playlist;
     }
 
+    public static void crearUsuarios() throws Exception{
+        File usuarios = new File("usuarios.txt");
+        PrintWriter writer = new PrintWriter(usuarios);
+        writer.print("/");
+        writer.print("user1");
+        writer.print("/");
+        writer.println("12345");
+        writer.print("/");
+        writer.println("user1@gmail.com");
+        writer.print("/");
+        writer.print("user2");
+        writer.print("/");
+        writer.println("567890");
+        writer.print("/");
+        writer.println("user2@gmail.com");
+        writer.print("/");
+        writer.print("user3");
+        writer.print("/");
+        writer.println("user3");
+        writer.print("/");
+        writer.print("user3@gmail.com");
+        writer.print("/");
+        writer.println("user4");
+        writer.print("/");
+        writer.print("user4");
+        writer.print("/");
+        writer.println("user4@gmail.com");
+        writer.print("/");
+        writer.print("user5");
+        writer.print("/");
+        writer.println("user5");
+        writer.print("/");
+        writer.println("user5@unal.edu.co");
+        writer.close();
+    }
+
+    public static ArrayList<Usuario> cargarUsuarios() throws Exception{
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        File archivo= new File("usuarios.txt");
+        Scanner lectura =new Scanner(archivo);
+        int indice=0;
+        while (lectura.hasNext()){
+            String linea = lectura.nextLine();
+            indice=linea.indexOf("/");
+            String username = linea.substring(indice+1);
+            String password = linea.substring(indice+1);
+            String email=linea.substring(indice+1);
+            Usuario user = new Usuario(username,password,email);
+            usuarios.add(user);
+    }
+        
+    lectura.close();
+        return usuarios;
+    }
     
     @Override
     public String toString(){
