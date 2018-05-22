@@ -24,7 +24,7 @@
                     <%=Mensaje.getMensajes().get("LogIn")%>
                 </div>
                 <div class="card-body">
-                    <form action="action">
+                    <form action="${pageContext.request.contextPath}/login" method="POST">
                         <div>
                             <div class="form-group">
                                 <label for="loginInputEmail"><%=Mensaje.getMensajes().get("EMAIL")%></label>
