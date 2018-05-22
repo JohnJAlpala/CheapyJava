@@ -65,6 +65,9 @@ public class Mensaje {
         Mensajes.put("RegisterQuestion", "¿Ya tienes una cuenta? ");
         Mensajes.put("LoginQuestion", "¿No tienes cuenta? ");
         Mensajes.put("fakeDataError", "Datos ficticios ya creados");
+        Mensajes.put("WrongEmail","Direccion de correo es Inválido");
+        Mensajes.put("SuccessfulRegister","Registro Exitoso.");
+        
         
         return Mensajes;
     }

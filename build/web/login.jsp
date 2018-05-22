@@ -28,15 +28,22 @@
                         <div>
                             <div class="form-group">
                                 <label for="loginInputEmail"><%=Mensaje.getMensajes().get("EMAIL")%></label>
-                                <input id="loginInputEmail" class="form-control" type="email" />
+                                <input id="loginInputEmail" class="form-control" type="email" name="loginInputEmail"/>
                             </div>
                             <div class="form-group">
                                 <label for="loginInputPassword"><%=Mensaje.getMensajes().get("Password")%></label>
-                                <input id="loginInputPassword" class="form-control" type="password" />
+                                <input id="loginInputPassword" class="form-control" type="password" name="loginInputPassword" />
                             </div>
                             <div class="text-right">
-                                <a href="menu.jsp"><button type="submit" class="btn btn-primary"><%=Mensaje.getMensajes().get("LogIn")%></button></a>
+                                <button type="submit" class="btn btn-primary" ><%=Mensaje.getMensajes().get("LogIn")%></button>
+                               
                             </div>
+                             <c:if test="${!ingreso}">
+                                <p>
+                                    <label><b><c:out value = "${respuesta}"/></b></label>
+                                </p>
+                            </c:if>
+
                         </div>
                     </form>
                     <p ><%=Mensaje.getMensajes().get("LoginQuestion")%><a href="register.jsp"><%=Mensaje.getMensajes().get("Registration")%> </a></p>

@@ -57,10 +57,7 @@ public class Index extends HttpServlet {
         
         if(accion != null){
             if (accion.equals("ficticios") && ficticios == false) { // GENERAR DATOS FICTICIO
-                Usuario Ul0 = new Usuario("Default", "123456789","jp@hotmail.com");
-                Usuario Ul1 = new Usuario("Luis Torres", "1121297380","lt@zoofonia.co");
-                Usuario Ul2 = new Usuario("Andres Jaramillo", "1026894593", "afjaramillo@unal.edu.co");
-
+                
                 Admin administrador = new Admin(11111111,"Luisa Rodriguez", "70063360", "Quando@hotmail.com");
 
                 Artista Art1 = new Artista("Goodwana","Grupo musical de reggae", "Reggae");
@@ -78,7 +75,7 @@ public class Index extends HttpServlet {
                 Cancion C4 = new Cancion("Cosas imposibles",album2, Art5, "romantica");
                 Cancion C5 = new Cancion("fiesta pagana",null, Art3, "hard rock");
 
-                Lista playList1 = new Lista("Crossover", "lo mas escuchado", "si", Ul0);
+                Lista playList1 = new Lista("Crossover", "lo mas escuchado", "si", administrador);
                 Lista playList2 = new Lista("Romantica", "lo mas escuchado", "si", administrador);
                 Lista playList3 = new Lista("Rock", "lo mas escuchado", "si", Ul0);
                 ArrayList<Cancion> lista = new ArrayList<>();
@@ -95,7 +92,7 @@ public class Index extends HttpServlet {
                 Comentario msg3 = new Comentario("Comentario", "la pagina esta muy genial", "gracias");
 
                 ArrayList<Admin> admins;
-                ArrayList<Usuario> users;
+                ArrayList<Usuario> users = null;
                 ArrayList<Album> albums;
                 ArrayList<Artista> artistas;
                 ArrayList<Lista> playlist;
@@ -108,7 +105,6 @@ public class Index extends HttpServlet {
                 } 
                 if (session.getAttribute("usuarios") == null) {
                     users = new ArrayList();
-                    users.add(Ul0);
                     session.setAttribute("users", users);
                 }
                 if (session.getAttribute("albums") == null) {
@@ -143,8 +139,8 @@ public class Index extends HttpServlet {
 
                 //aquí se agregan datos ficticios desde un txt
                 try {
-                    Admin.crearAdministradores();
-                    //admins.addAll(Admin.cargarAdministradores());
+                    Usuario.crearUsuarios();
+                    users.addAll(Admin.cargarUsuarios());
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.toString());
                 }

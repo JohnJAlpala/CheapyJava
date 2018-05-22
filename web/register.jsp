@@ -31,7 +31,12 @@
                         </div>
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary"><%=Mensaje.getMensajes().get("Register")%> </button>
-                        </div> 
+                        </div>
+                        <c:if test="${!ingreso}">
+                            <p>
+                                <label><b><c:out value = "${respuesta}"/></b></label>
+                            </p>
+                        </c:if>
                     </form>
                             <p><%=Mensaje.getMensajes().get("RegisterQuestion")%> <a href="login.jsp"><%=Mensaje.getMensajes().get("LogIn")%></a></p>
                 </div>

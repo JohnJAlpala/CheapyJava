@@ -7,13 +7,17 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.*;
 
-public class Admin extends Usuario {
+public class Admin extends Usuario  {
     
     private int Identificacion;
+    private boolean activo;
     public static List<Admin> admins = new ArrayList<>();
+    
     public Admin(int Identificacion, String username, String password, String email) throws IOException{
         super(username, password, email);
         this.setIdentificacion(Identificacion);
+        this.setActivo(true);
+        admins.add(this);
     }
 
     public Admin(int Identificacion) throws IOException{
@@ -27,6 +31,18 @@ public class Admin extends Usuario {
     public void setIdentificacion(int Identificacion) {
         this.Identificacion = Identificacion;
     }
+
+    @Override
+    public boolean isActivo() {
+        return activo;
+    }
+    
+    @Override
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+     
     
      public static void crearAdministradores() throws Exception{
          File administradores = new File("administradores.txt");
