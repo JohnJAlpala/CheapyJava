@@ -64,6 +64,7 @@ public class Mensaje {
         Mensajes.put("RecoveryVerified","Su E-mail ha sido verificado y le hemos envado un mensaje con su contraseña. Lo esperamos pronto.");
         Mensajes.put("RegisterQuestion", "¿Ya tienes una cuenta? ");
         Mensajes.put("LoginQuestion", "¿No tienes cuenta? ");
+        Mensajes.put("fakeDataError", "Datos ficticios ya creados");
         
         return Mensajes;
     }

@@ -4,8 +4,12 @@
     Author     : richard
 --%>
 
+<%@page import="models.Mensaje"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="/parts/navbar.jsp" />
+<jsp:include page="/parts/header.jsp" />
+
+    
+
 <div class="container">
     
     <!-- Start Table -->
@@ -14,9 +18,9 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Song</th>
-                    <th scope="col">Artist</th>
-                    <th scope="col">Album</th>
+                    <th scope="col"><%=Mensaje.getMensajes().get("Song")%></th>
+                    <th scope="col"><%=Mensaje.getMensajes().get("Artist")%></th>
+                    <th scope="col"><%=Mensaje.getMensajes().get("Album")%></th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -61,15 +65,15 @@
     
     <!-- Start Table -->
     <br>
-    <h3 class="text-center"> Resultados: </h3>
+    <h3 class="text-center"><%=Mensaje.getMensajes().get("SearchResult")%></h3>
     <div class="row table-padding">
         <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Song</th>
-                    <th scope="col">Artist</th>
-                    <th scope="col">Album</th>
+                    <th scope="col"><%=Mensaje.getMensajes().get("Song")%></th>
+                    <th scope="col"><%=Mensaje.getMensajes().get("Artist")%></th>
+                    <th scope="col"><%=Mensaje.getMensajes().get("Album")%></th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>

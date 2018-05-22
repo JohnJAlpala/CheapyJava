@@ -12,24 +12,20 @@
     <script src="${pageContext.request.contextPath}/js/app.js" > </script>
     </body>
     <footer>
-        Contenido Elemento
+        <%=Mensaje.getMensajes().get("Footer")%>
     </footer>
     <style>
-            .button3{
-                background-color: #343a40!important;
-                border: none;
+            footer{
+                background-color: #212529!important;
                 color: white;
                 text-align: center;
-                display: inline-block;
                 margin-top: 30px;
                 height: 50px;
                 width: 100%;
                 font-size: 16px;
                 font-family: monospace;
+                padding-top: 10px;
             }
-    </style>
-    
-    <button class="button3"><%=Mensaje.getMensajes().get("Footer")%></button>
-    
+    </style>    
         
 </html>

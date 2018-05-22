@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import models.Usuario;
 
 /**
@@ -76,9 +77,10 @@ public class Register extends HttpServlet {
         String email = request.getParameter("emailRegister");
         
         Usuario usuario = new Usuario(username, password, email);
+        //usuario.registrarUsuario();
         
-        System.out.println("USERNAME: " + username + " password " + password + " email " + email);
-        
+        HttpSession req = request.getSession();
+        req.setAttribute("user", usuario);        
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
         dispatcher.forward(request, response);
     }

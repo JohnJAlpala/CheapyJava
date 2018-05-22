@@ -4,7 +4,7 @@
     Author     : richard
 --%>
 
-<jsp:include page="/parts/navbar.jsp" />
+<jsp:include page="/parts/header.jsp" />
 
 <div class="container">
     <div class="row">

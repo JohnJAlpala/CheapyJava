@@ -6,7 +6,7 @@
 
 <%@page import="models.Mensaje"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="/parts/navbar.jsp" />
+<jsp:include page="/parts/header.jsp" />
 
     
 

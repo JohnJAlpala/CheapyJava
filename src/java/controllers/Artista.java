@@ -12,16 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import models.Mensaje;
-import models.Usuario;
 
 /**
  *
  * @author richard
  */
-@WebServlet(name = "Login", urlPatterns = {"/login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "Artista", urlPatterns = {"/artista"})
+public class Artista extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,8 +32,6 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -52,7 +47,8 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+        
+        getServletContext().getRequestDispatcher("/artista.jsp").forward(request, response);
     }
 
     /**
@@ -67,22 +63,6 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
-        String email =  request.getParameter("emailLogin");
-        String password = request.getParameter("passwordLogin");
-        
-        HttpSession sec = request.getSession();
-        Usuario user = (Usuario) sec.getAttribute("user");
-        
-                
-        if (user != null){
-            if (user.login(email, password))
-                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-        }
-        else{
-            request.setAttribute("error", "Email o contraseña erroneos");
-            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
-        }
     }
 
     /**

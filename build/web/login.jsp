@@ -4,10 +4,11 @@
     Author     : richard
 --%>
 
+<%@page import="models.Mensaje"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<jsp:include page="/parts/navbar.jsp"/>
+<jsp:include page="/parts/header.jsp"/>
 <!-- INICIO BODY -->
 <div class="container">
     <div class="row">
@@ -20,24 +21,25 @@
             </c:if>
             <div class="card center-item">
                 <div class="card-header">
-                    Login
+                    <%=Mensaje.getMensajes().get("LogIn")%>
                 </div>
                 <div class="card-body">
                     <form action="action">
                         <div>
                             <div class="form-group">
-                                <label for="loginInputEmail">Email: </label>
+                                <label for="loginInputEmail"><%=Mensaje.getMensajes().get("EMAIL")%></label>
                                 <input id="loginInputEmail" class="form-control" type="email" />
                             </div>
                             <div class="form-group">
-                                <label for="loginInputPassword">Password:</label>
+                                <label for="loginInputPassword"><%=Mensaje.getMensajes().get("Password")%></label>
                                 <input id="loginInputPassword" class="form-control" type="password" />
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <a href="menu.jsp"><button type="submit" class="btn btn-primary"><%=Mensaje.getMensajes().get("LogIn")%></button></a>
                             </div>
                         </div>
                     </form>
+                    <p ><%=Mensaje.getMensajes().get("LoginQuestion")%><a href="register.jsp"><%=Mensaje.getMensajes().get("Registration")%> </a></p>
                 </div>
             </div>
 

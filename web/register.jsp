@@ -6,7 +6,7 @@
 
 
 <%@page import="models.Mensaje"%>
-<jsp:include page="/parts/navbar.jsp"/>
+<jsp:include page="/parts/header.jsp"/>
 <div class="container">
     <div class="row">
         <div class="col-3"></div>

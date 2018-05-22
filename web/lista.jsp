@@ -4,7 +4,7 @@
     Author     : richard
 --%>
 
-<jsp:include page="/parts/navbar.jsp" />
+<jsp:include page="/parts/header.jsp" />
 
 <div class="container">
     <div class="row">
@@ -29,6 +29,7 @@
         </table>
     </div>
     <!-- End Table -->
+    <jsp:include page="/parts/comentarios.jsp" />
 </div>
 
 <jsp:include page="/parts/footer.jsp" />

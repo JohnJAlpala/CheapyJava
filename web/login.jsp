@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<jsp:include page="/parts/navbar.jsp"/>
+<jsp:include page="/parts/header.jsp"/>
 <!-- INICIO BODY -->
 <div class="container">
     <div class="row">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </form>
-                                <p ><%=Mensaje.getMensajes().get("LoginQuestion")%><a href="register.jsp"><%=Mensaje.getMensajes().get("Registration")%> </a></p>
+                    <p ><%=Mensaje.getMensajes().get("LoginQuestion")%><a href="register.jsp"><%=Mensaje.getMensajes().get("Registration")%> </a></p>
                 </div>
             </div>
 
