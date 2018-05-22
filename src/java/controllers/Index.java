@@ -81,9 +81,13 @@ public class Index extends HttpServlet {
                 Lista playList1 = new Lista("Crossover", "lo mas escuchado", "si", Ul0);
                 Lista playList2 = new Lista("Romantica", "lo mas escuchado", "si", administrador);
                 Lista playList3 = new Lista("Rock", "lo mas escuchado", "si", Ul0);
-                playList1.setCancion(C1);
-                playList1.setCancion(C2);
-                playList1.setCancion(C3);
+                ArrayList<Cancion> lista = new ArrayList<>();
+                lista.add(C1);
+                playList1.setCancion(lista);
+                lista.add(C2);
+                playList1.setCancion(lista);
+                lista.add(C3);
+                playList1.setCancion(lista);
 
 
                 Comentario msg1 = new Comentario("Comentario", "la pagina esta muy genial", "gracias");

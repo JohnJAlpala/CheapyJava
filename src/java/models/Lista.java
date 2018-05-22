@@ -10,7 +10,7 @@ public class Lista {
     private String descripcion;
     private String publica;
     private Usuario Creador;
-    private Cancion cancion;
+    private ArrayList<Cancion> canciones;
     private ArrayList<Comentario>comentario;
 
     public Lista(String nombre, String descripcion, String publica, Usuario Creador) {
@@ -57,12 +57,12 @@ public class Lista {
         this.Creador = creador;
     }
 
-    public Cancion getCancion() {
-        return cancion;
+    public ArrayList<Cancion> getCancion() {
+        return canciones;
     }
 
-    public void setCancion(Cancion cancion) {
-        this.cancion = cancion;
+    public void setCancion(ArrayList<Cancion> cancion) {
+        this.canciones = cancion;
     }
 
     public ArrayList<Comentario> getComentario() {

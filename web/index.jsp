@@ -5,7 +5,6 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="models.Mensaje"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="/parts/header.jsp" />
@@ -48,7 +47,10 @@
             </tbody>
         </table>
     </div>
-                    <a class="btn btn-success" href="${pageContext.request.contextPath}/" >Crear Playlist</a>   
+    <form method="POST" action="${pageContext.request.contextPath}/lista">
+        <input name="accion" value="insertar" type="hidden" />
+        <button type="submit" class="btn btn-success">Crear Playlist</button>   
+    </form>
     </c:if>
     <!-- End Table -->
     <!-- Searchbar -->
