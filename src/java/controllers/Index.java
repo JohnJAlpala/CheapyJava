@@ -88,7 +88,7 @@ public class Index extends HttpServlet {
                 Comentario msg3 = new Comentario("Comentario", "la pagina esta muy genial", "gracias");
 
                 ArrayList<Admin> admins;
-                ArrayList<Usuario> users;
+                ArrayList<Usuario> users = null;
                 ArrayList<Album> albums;
                 ArrayList<Artista> artistas;
                 ArrayList<Lista> playlist;
@@ -101,7 +101,6 @@ public class Index extends HttpServlet {
                 } 
                 if (session.getAttribute("usuarios") == null) {
                     users = new ArrayList();
-                    users.add(Ul0);
                     session.setAttribute("users", users);
                 }
                 if (session.getAttribute("albums") == null) {

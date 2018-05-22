@@ -7,6 +7,8 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.Mensaje;
+import static models.Mensaje.Mensajes;
 import models.Usuario;
+import models.Admin;
 
 /**
  *
@@ -66,24 +70,47 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+           HttpSession session = request.getSession();
 
-        String email =  request.getParameter("emailLogin");
-        String password = request.getParameter("passwordLogin");
-        
-        HttpSession sec = request.getSession();
-        Usuario user = (Usuario) sec.getAttribute("user");
-        
-                
-        if (user != null){
-            if (user.login(email, password))
-                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-        }
-        else{
-            request.setAttribute("error", "Email o contraseña erroneos");
-            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
-        }
-    }
+           String email = (request.getParameter("loginInputEmail"));
+           String contraseña = (request.getParameter("loginInputPassword"));
+           Boolean ingreso = false;
+
+           ArrayList<Admin> admins = (ArrayList<Admin>) session.getAttribute("admins");
+           ArrayList<Usuario> users = (ArrayList<Usuario>) session.getAttribute("users");
+
+           if (Usuario.validateEmail(email) == true) {
+
+               if (admins != null) {
+                   for (Admin admin : admins) {
+                       if (admin.isActivo() ==  email.equalsIgnoreCase(admin.getEmail()) && admin.getPassword().equals(contraseña)) {
+                           session.setAttribute("tipoUsuario", "Admin");
+                           session.setAttribute("usuario", admin);
+                           ingreso = true;
+                           RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+                           view.forward(request, response);
+                       }
+                   }
+               }
+               if (users != null) {
+                   for (Usuario user : users) {
+                       if (email.equalsIgnoreCase(user.getEmail()) && user.getPassword().equals(contraseña)) {
+                           session.setAttribute("tipoUsuario", "user");
+                           session.setAttribute("usuario", user);
+                           ingreso = true;
+                           RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+                           view.forward(request, response);
+                       }
+                   }
+               }
+           } 
+           request.setAttribute("respuesta", Mensaje.getMensajes().get("WrongPassOrEmail"));
+           request.setAttribute("ingreso", ingreso);
+           RequestDispatcher view = request.getRequestDispatcher("/login.jsp");
+           view.forward(request, response);
+
+       }
 
     /**
      * Returns a short description of the servlet.

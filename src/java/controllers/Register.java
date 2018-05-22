@@ -7,6 +7,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.Mensaje;
+import static models.Mensaje.Mensajes;
 import models.Usuario;
 
 /**
@@ -50,9 +53,7 @@ public class Register extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        System.out.println("Register GET!!");
-        
+            
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
         dispatcher.forward(request, response);
     }
@@ -68,22 +69,51 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        
-        System.out.println("Register POST!!");
-        
-        String username = request.getParameter("usernameRegister");
-        String password = request.getParameter("passwordRegister");
-        String email = request.getParameter("emailRegister");
-        
-        Usuario usuario = new Usuario(username, password, email);
-        //usuario.registrarUsuario();
-        
-        HttpSession req = request.getSession();
-        req.setAttribute("user", usuario);        
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/register.jsp");
-        dispatcher.forward(request, response);
+            
+            HttpSession session = request.getSession(true);
+            ArrayList<Usuario> users = (ArrayList<Usuario>)session.getAttribute("users"); 
+
+            String userName = (request.getParameter("usernameRegister"));
+            String email = (request.getParameter("emailRegister"));
+            String pass = (request.getParameter("passwordRegister"));
+            String verificacion = Mensaje.getMensajes().get("SuccessfulRegister");
+            boolean registro = false;
+                       
+            if ( users != null) {
+                if (Usuario.validateEmail(email)) {
+                    for (Usuario user : users) {
+                        if (user.getEmail().equalsIgnoreCase(email)) {
+                            registro = false;
+                            verificacion = Mensaje.getMensajes().get("RegisteredEmail");
+                            request.setAttribute("respuesta", verificacion);
+                            request.setAttribute("ingreso", registro);
+                            RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
+                            view.forward(request, response);
+                        }
+
+                    }
+                } else {
+                    registro = false;
+                    verificacion = Mensaje.getMensajes().get("wrongEmail");
+                    request.setAttribute("respuesta", verificacion);
+                    RequestDispatcher view = request.getRequestDispatcher("/register.jsp");
+                    view.forward(request, response);
+                }
+            }else{
+                users = new ArrayList<Usuario>();
+            }
+
+            Usuario NewUser = new Usuario(userName, pass, email);
+            
+            users.add(NewUser);
+            session.setAttribute("users",users);
+            request.setAttribute("respuesta", verificacion);
+            request.setAttribute("registro", registro);
+            RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+            view.forward(request, response);
+
     }
+        
 
     /**
      * Returns a short description of the servlet.
