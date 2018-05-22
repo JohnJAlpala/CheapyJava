@@ -15,7 +15,7 @@ public class Cancion {
     public Cancion(String nombre, Album album, Artista artita, String genero) {
         this.setNombre(nombre);
         this.setAlbum(album);
-        this.setArtita(artita);
+        this.setArtista(artita);
         this.setGenero(genero);
         canciones.add(this);
     }
@@ -38,11 +38,11 @@ public class Cancion {
         this.album = album;
     }
 
-    public Artista getArtita() {
+    public Artista getArtista() {
         return artista;
     }
 
-    public void setArtita(Artista artita) {
+    public void setArtista(Artista artita) {
         this.artista = artita;
     }
 

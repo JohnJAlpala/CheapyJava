@@ -4,6 +4,8 @@
     Author     : richard
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="models.Mensaje"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="/parts/header.jsp" />
@@ -13,6 +15,7 @@
 <div class="container">
     
     <!-- Start Table -->
+    <c:if test="${listaReproduccionCreacion != null}">
     <div class="row table-padding">
         <table class="table">
             <thead class="thead-dark">
@@ -25,30 +28,34 @@
                 </tr>
             </thead>
             <tbody>
+                <c:forEach items="${listaReproduccionCreacion}" var="cancion" varStatus="loop">
                 <tr>
                     <th scope="row">id</th>
-                    <td> SONG 1 </td>
-                    <td> ARTIST 1</td>
-                    <td>ALBUM 1</td>
+                    <td> ${cancion.getNombre()} </td>
+                    <td> ${cancion.getArtista().getNombre()}</td>
+                    <td> ${cancion.getAlbum().getNombre()}</td>
                     <td>
-                        <form action="${pageContext.request.contextPath}/" method="POST">
-                            <input type="hidden" name="d--elete" value="id"/>
+                        <form action="${pageContext.request.contextPath}/Index" method="POST">
+                            <input type="hidden" name="delete" value="${loop.index}"/>
                             <button class="btn btn-danger btn-rounded btn-sm my-0" type="submit">
                                 <i class="fa fa-times"></i>
                             </button>
                         </form>                  
                     </td>
                 </tr>
+                </c:forEach>
                 
             </tbody>
         </table>
     </div>
+                    <a class="btn btn-success" href="${pageContext.request.contextPath}/" >Crear Playlist</a>   
+    </c:if>
     <!-- End Table -->
     <!-- Searchbar -->
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
-            <form action="${pageContext.request.contextPath}/" method="POST">
+            <form action="${pageContext.request.contextPath}/Index" method="POST">
                 <div class="input-group center-item">
                     <input type="text" class="form-control" id="txtSearch" name="txtSearch" placeholder="Busqueda"/>
                     <div class="input-group-append">
@@ -64,6 +71,7 @@
     <!-- End Searchbar -->
     
     <!-- Start Table -->
+    <c:if test="${solucion != null}">
     <br>
     <h3 class="text-center"><%=Mensaje.getMensajes().get("SearchResult")%></h3>
     <div class="row table-padding">
@@ -78,24 +86,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">id</th>
-                    <td> SONG 1 </td>
-                    <td> ARTIST 1</td>
-                    <td>ALBUM 1</td>
-                    <td>
-                        <form action="${pageContext.request.contextPath}/" method="POST">
-                            <input type="hidden" name="add" value="id"/>
-                            <button class="btn btn-success btn-rounded btn-sm my-0" type="submit">
-                                <i class="fa fa-check"></i>
-                            </button>
-                        </form>                  
-                    </td>
-                </tr>
-                
+                <c:forEach items="${solucion}" var="cancion" varStatus="loop">
+                     <tr>
+                         <th scope="row"></th>
+                         <td> ${cancion.getNombre()} </td>
+                         <td> ${cancion.getArtista().getNombre()}</td>
+                         <td> ${cancion.getAlbum().getNombre()}</td>
+                         <td>
+                             <form action="${pageContext.request.contextPath}/Index" method="POST">
+                                 <input type="hidden" name="add" value="${loop.index}"/>
+                                 <button class="btn btn-success btn-rounded btn-sm my-0" type="submit">
+                                     <i class="fa fa-check"></i>
+                                 </button>
+                             </form>                  
+                         </td>
+                     </tr>
+                 </c:forEach>                 
             </tbody>
         </table>
     </div>
+    </c:if>
     <!-- End Table -->
 </div>
 <jsp:include page="/parts/footer.jsp"/>
