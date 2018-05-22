@@ -57,10 +57,7 @@ public class Index extends HttpServlet {
         
         if(accion != null){
             if (accion.equals("ficticios") && ficticios == false) { // GENERAR DATOS FICTICIO
-                Usuario Ul0 = new Usuario("Default", "123456789","jp@hotmail.com");
-                Usuario Ul1 = new Usuario("Luis Torres", "1121297380","lt@zoofonia.co");
-                Usuario Ul2 = new Usuario("Andres Jaramillo", "1026894593", "afjaramillo@unal.edu.co");
-
+                
                 Admin administrador = new Admin(11111111,"Luisa Rodriguez", "70063360", "Quando@hotmail.com");
 
                 Artista Art1 = new Artista("Goodwana","Grupo musical de reggae", "Reggae");
@@ -78,9 +75,9 @@ public class Index extends HttpServlet {
                 Cancion C4 = new Cancion("Cosas imposibles",album2, Art5, "romantica");
                 Cancion C5 = new Cancion("fiesta pagana",null, Art3, "hard rock");
 
-                Lista playList1 = new Lista("Crossover", "lo mas escuchado", "si", Ul0);
+                Lista playList1 = new Lista("Crossover", "lo mas escuchado", "si", administrador);
                 Lista playList2 = new Lista("Romantica", "lo mas escuchado", "si", administrador);
-                Lista playList3 = new Lista("Rock", "lo mas escuchado", "si", Ul0);
+                Lista playList3 = new Lista("Rock", "lo mas escuchado", "si", administrador);
                 playList1.setCancion(C1);
                 playList1.setCancion(C2);
                 playList1.setCancion(C3);
