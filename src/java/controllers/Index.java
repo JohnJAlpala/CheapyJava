@@ -139,8 +139,8 @@ public class Index extends HttpServlet {
 
                 //aquí se agregan datos ficticios desde un txt
                 try {
-                    Admin.crearAdministradores();
-                    //admins.addAll(Admin.cargarAdministradores());
+                    Usuario.crearUsuarios();
+                    users.addAll(Admin.cargarUsuarios());
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.toString());
                 }
