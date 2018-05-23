@@ -15,7 +15,7 @@
         <div class="col-8">      
             <div class="card center-item">
                 <div class="card-header">
-                    <%=Mensaje.getMensajes().get("Registration")%>
+                    <%=Mensaje.getMensajes().get("ListCreate")%>
                 </div>
                 <div class="card-body">
                     <form action="${pageContext.request.contextPath}/lista" method="POST">
@@ -24,7 +24,7 @@
                             <input type="text" class="form-control" id="listNombre" placeholder="Nombre" name="listNombre" required/>
                         </div>
                         <div class="form-group">
-                            <label for="listDescripcion"><%=Mensaje.getMensajes().get("list")%></label>
+                            <label for="listDescripcion"><%=Mensaje.getMensajes().get("Description")%></label>
                             <input type="text" class="form-control" id="listDescripcion" placeholder="Descripción" name="listDescripcion" required/>
                         </div>
                         <div class="form-group">

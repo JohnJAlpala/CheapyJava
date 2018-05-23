@@ -24,7 +24,7 @@
                     <%=Mensaje.getMensajes().get("LogIn")%>
                 </div>
                 <div class="card-body">
-                    <form action="action">
+                    <form method="POST" action="${pageContext.request.contextPath}/login">
                         <div>
                             <div class="form-group">
                                 <label for="loginInputEmail"><%=Mensaje.getMensajes().get("EMAIL")%></label>
@@ -40,7 +40,7 @@
                             </div>
                              <c:if test="${!ingreso}">
                                 <p>
-                                    <label><b><c:out value = "${respuesta}"/></b></label>
+                                    <label><b><c:out value="${respuesta}"/></b></label>
                                 </p>
                             </c:if>
 

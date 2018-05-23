@@ -1,6 +1,5 @@
 package controllers;
 
-import com.oracle.jrockit.jfr.DataType;
 import models.Admin;
 import models.Album;
 import models.Artista;
@@ -8,11 +7,7 @@ import models.Cancion;
 import models.Lista;
 import models.Comentario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -77,14 +72,12 @@ public class Index extends HttpServlet {
 
                 Lista playList1 = new Lista("Crossover", "lo mas escuchado", "si", administrador);
                 Lista playList2 = new Lista("Romantica", "lo mas escuchado", "si", administrador);
-                Lista playList3 = new Lista("Rock", "lo mas escuchado", "si", Ul0);
                 ArrayList<Cancion> lista = new ArrayList<>();
                 lista.add(C1);
                 playList1.setCancion(lista);
                 lista.add(C2);
-                playList1.setCancion(lista);
                 lista.add(C3);
-                playList1.setCancion(lista);
+                playList2.setCancion(lista);
 
 
                 Comentario msg1 = new Comentario("Comentario", "la pagina esta muy genial", "gracias");
@@ -142,7 +135,7 @@ public class Index extends HttpServlet {
                     Usuario.crearUsuarios();
                     users.addAll(Admin.cargarUsuarios());
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.toString());
+                    System.err.println(e.getMessage());
                 }
                 session.setAttribute("ficticios", true);
             } 
@@ -174,6 +167,12 @@ public class Index extends HttpServlet {
                 listaReproduccion = new ArrayList<>();
             listaReproduccion.add(cancion);
             session.setAttribute("listaReproduccionCreacion", listaReproduccion);            
+        }
+        if(request.getParameter("delete") != null){
+            int i = Integer.parseInt(request.getParameter("delete"));
+            ArrayList<Cancion> listaReproduccion = (ArrayList<Cancion>) session.getAttribute("listaReproduccionCreacion");
+            listaReproduccion.remove(i);
+            session.setAttribute("listaReproduccionCreacion", listaReproduccion); 
         }
         
         RequestDispatcher view = request.getRequestDispatcher("index.jsp");

@@ -4,6 +4,7 @@
     Author     : richard
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/parts/header.jsp" />
 
 <div class="container">
@@ -19,12 +20,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">Cancion1</th>
-                    <td> Album1 </td>
-                    <td> Artista1</td>
-                    <td>Genero1</td>
-                </tr>
+                
+                <c:forEach items="${list.getCancion()}" var="cancion" varStatus="loop">
+                    <tr>
+                        <th scope="row">${cancion.getNombre()}</th>
+                        <td> ${cancion.getAlbum().getNombre()} </td>
+                        <td> ${cancion.getArtista().getNombre()}</td>
+                        <td>${cancion.getGenero()}</td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>

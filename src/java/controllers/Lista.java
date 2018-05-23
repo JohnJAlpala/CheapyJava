@@ -37,18 +37,7 @@ public class Lista extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet lista</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet lista at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,6 +53,10 @@ public class Lista extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        
+        RequestDispatcher view = request.getRequestDispatcher("listas.jsp");
+        view.forward(request, response);
     }
 
     /**
@@ -80,7 +73,7 @@ public class Lista extends HttpServlet {
         //processRequest(request, response);
         HttpSession session = request.getSession();
         ArrayList<Cancion> canciones = (ArrayList<Cancion>) session.getAttribute("listaReproduccionCreacion");
-        models.Usuario usuario = (models.Usuario) session.getAttribute("NewUser");
+        models.Usuario usuario = (models.Usuario) session.getAttribute("usuario");
         String accion = request.getParameter("accion");
         
         if(accion.equals("insertar")){ // Pasa la playlist para crear los otros datos
@@ -93,8 +86,24 @@ public class Lista extends HttpServlet {
             String publica = request.getParameter("listPublica");
             
             models.Lista nuevaLista = new models.Lista(nombre, descripcion, publica, usuario);
+            ArrayList<models.Lista> playlist = (ArrayList<models.Lista>) session.getAttribute("playlist");
+            if(playlist == null){
+                playlist = new ArrayList<>();
+            }
+            nuevaLista.setCancion((ArrayList<Cancion>) session.getAttribute("listaReproduccionCreacion"));
             
-            RequestDispatcher view = request.getRequestDispatcher("crear-listas.jsp");
+            playlist.add(nuevaLista);
+            session.setAttribute("playlist", playlist);
+            
+            RequestDispatcher view = request.getRequestDispatcher("listas.jsp");
+            view.forward(request, response);
+        } else if (accion.equals("more")){
+            int index = Integer.parseInt(request.getParameter("more"));
+            ArrayList<models.Lista> playlist = (ArrayList<models.Lista>) session.getAttribute("playlist");
+            models.Lista play = playlist.get(index);
+            request.setAttribute("list", play);
+            
+            RequestDispatcher view = request.getRequestDispatcher("lista.jsp");
             view.forward(request, response);
         }
     }

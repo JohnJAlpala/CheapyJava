@@ -14,7 +14,7 @@
 <div class="container">
     
     <!-- Start Table -->
-    <c:if test="${listaReproduccionCreacion != null}">
+    <c:if test="${listaReproduccionCreacion != null && listaReproduccionCreacion.size() > 0}">
     <div class="row table-padding">
         <table class="table">
             <thead class="thead-dark">

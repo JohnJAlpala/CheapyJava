@@ -4,6 +4,7 @@
     Author     : richard
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/parts/header.jsp" />
 
 <div class="container">
@@ -20,20 +21,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">Lista1</th>
-                    <td> Esta es una lista de reproduccion </td>
-                    <td> Privada</td>
-                    <td>Yo quien más</td>
-                    <td>
-                        <form action="${pageContext.request.contextPath}/listas" method="POST">
-                            <input type="hidden" name="delete" value="Lista1"/>
-                            <button class="btn btn-primary btn-sm my-0" type="submit">
-                                Ver más
-                            </button>
-                        </form>                  
-                    </td>
-                </tr>
+¡                <c:forEach items="${playlist}" var="list" varStatus="loop">
+                    <c:if test="${list.getCreador().equals(usuario)}">
+                    <th scope="row">${list.getNombre()}</th>
+                        <td> ${list.getDescripcion()} </td>
+                        <td> ${list.getPublica()}</td>
+                        <td>${list.getCreador().getUsername()}</td>
+                        <td>
+                            <form action="${pageContext.request.contextPath}/lista" method="POST">
+                                <input type="hidden" name="more" value="${loop.index}"/>
+                                <button class="btn btn-primary btn-sm my-0" name="accion" value="more" type="submit">
+                                    Ver más
+                                </button>
+                            </form>                  
+                        </td>
+                    </c:if>
+                </c:forEach>             
                 
             </tbody>
         </table>

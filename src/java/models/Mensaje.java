@@ -15,6 +15,7 @@ public class Mensaje {
         Mensajes.put("ForgottenPassword", "¿Olvidó su contraseña?");
         Mensajes.put("Home", "Inicio");
         Mensajes.put("list", "Playlist");
+        Mensajes.put("ListCreate", "Crear Playlist");
         Mensajes.put("FictionalData", "Datos ficticios");
         Mensajes.put("FictionalDataPopUp", "'Se han creado datos ficticios'");
         Mensajes.put("InvalidEmail", "'El correo electrónico ingresado no es válido'");
@@ -42,6 +43,7 @@ public class Mensaje {
         Mensajes.put("AdminExists", "El admin ya esta registrado");
         Mensajes.put("Search", "Buscar");
         Mensajes.put("Song", "Cancion");
+        Mensajes.put("Description", "Descripcion");
         Mensajes.put("SearchList", "Buscar Playlist");
         Mensajes.put("UserName", "Nombre Usuario");
         Mensajes.put("SearchName", "Buscar por nombre");

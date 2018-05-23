@@ -63,12 +63,16 @@
         </c:if>
     <div class="text-center" >
             <div class="btn-group">
-                <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/register">Registrar</a>
-                <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/login">Iniciar sesion</a>
+                <c:if test="${usuario == null}">
+                    <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/register">Registrar</a>
+                    <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/login">Iniciar sesion</a>
+                </c:if>
+                <c:if test="${ficticios == null}">
                 <form action="./Index" method="POST">
                     <input type="hidden" value="ficticios" name="accion"/>
                     <button onclick="myFunction()" type="submit" class="btn btn-primary btn-lg">Datos ficticios</button>
                 </form>
+                </c:if>
 
                 <script>
                     function myFunction() {
