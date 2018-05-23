@@ -69,6 +69,10 @@ public class Mensaje {
         Mensajes.put("fakeDataError", "Datos ficticios ya creados");
         Mensajes.put("WrongEmail","Direccion de correo es Inválido");
         Mensajes.put("SuccessfulRegister","Registro Exitoso.");
+        Mensajes.put("ArtistDescription","Descripcion del artista:");
+        Mensajes.put("MusicalGenre","Generos musicales:");
+        Mensajes.put("Create","Crear");
+        Mensajes.put("CreateArtist","Crear Artista");
         
         
         return Mensajes;
